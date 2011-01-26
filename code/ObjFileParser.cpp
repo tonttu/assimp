@@ -524,7 +524,7 @@ void ObjFileParser::getGroupName()
 	if ( m_pModel->m_strActiveGroup != strGroupName )
 	{
 		// Search for already existing entry
-		ObjFile::Model::ConstGroupMapIt it = m_pModel->m_Groups.find(&strGroupName);
+		ObjFile::Model::ConstGroupMapIt it = m_pModel->m_Groups.find(strGroupName);
 		
 		// We are mapping groups into the object structure
 		createObject( strGroupName );
@@ -533,7 +533,7 @@ void ObjFileParser::getGroupName()
 		if (it == m_pModel->m_Groups.end())
 		{
 			std::vector<unsigned int> *pFaceIDArray = new std::vector<unsigned int>;
-			m_pModel->m_Groups[ &strGroupName ] = pFaceIDArray;
+			m_pModel->m_Groups[ strGroupName ] = pFaceIDArray;
 			m_pModel->m_pGroupFaceIDs = (pFaceIDArray);
 		}
 		else
