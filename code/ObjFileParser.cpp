@@ -408,10 +408,9 @@ void ObjFileParser::getMaterialDesc()
 //	Get a comment, values will be skipped
 void ObjFileParser::getComment()
 {
-	bool running = true;
-	while (running)
+	while (m_DataIt != m_DataItEnd)
 	{
-		if ( '\n' == (*m_DataIt) || m_DataIt == m_DataItEnd ) 
+		if ( '\n' == (*m_DataIt))
 		{
 			++m_DataIt;
 			break;
