@@ -66,6 +66,8 @@ ObjFileParser::ObjFileParser(std::vector<char> &Data,const std::string &strModel
 	m_uiLine(0),
 	m_pIO( io )
 {
+	memset(m_buffer, BUFFERSIZE, 0);
+
 	// Create the model instance to store all the data
 	m_pModel = new ObjFile::Model();
 	m_pModel->m_ModelName = strModelName;
@@ -188,7 +190,7 @@ void ObjFileParser::copyNextWord(char *pBuffer, size_t length)
 {
 	size_t index = 0;
 	m_DataIt = getNextWord<DataArrayIt>(m_DataIt, m_DataItEnd);
-	while ( !isSeparator(*m_DataIt) && m_DataIt != m_DataItEnd )
+	while ( m_DataIt != m_DataItEnd && !isSeparator(*m_DataIt) )
 	{
 		pBuffer[index] = *m_DataIt;
 		index++;
@@ -262,7 +264,7 @@ void ObjFileParser::getFace()
 	char *pPtr = m_buffer;
 	char *pEnd = &pPtr[BUFFERSIZE];
 	pPtr = getNextToken<char*>(pPtr, pEnd);
-	if (pPtr == '\0')
+	if (pPtr == pEnd || *pPtr == '\0')
 		return;
 
 	std::vector<unsigned int> *pIndices = new std::vector<unsigned int>;
@@ -279,7 +281,7 @@ void ObjFileParser::getFace()
 		if (*pPtr == '\0')
 			break;
 
-		if (*pPtr=='\r')
+		if (*pPtr=='\r' || *pPtr=='\n')
 			break;
 
 		if (*pPtr=='/' )
@@ -372,7 +374,7 @@ void ObjFileParser::getMaterialDesc()
 		return;
 
 	char *pStart = &(*m_DataIt);
-	while ( !isSeparator(*m_DataIt) && m_DataIt != m_DataItEnd )
+	while ( m_DataIt != m_DataItEnd && !isSeparator(*m_DataIt) )
 		++m_DataIt;
 
 	// Get name
@@ -431,7 +433,7 @@ void ObjFileParser::getMaterialLib()
 		return;
 	
 	char *pStart = &(*m_DataIt);
-	while (!isNewLine(*m_DataIt))
+	while (m_DataIt != m_DataItEnd && !isNewLine(*m_DataIt))
 		m_DataIt++;
 
 	// Check for existence
@@ -465,7 +467,7 @@ void ObjFileParser::getNewMaterial()
 
 	char *pStart = &(*m_DataIt);
 	std::string strMat( pStart, *m_DataIt );
-	while ( isSeparator( *m_DataIt ) )
+	while ( m_DataIt != m_DataItEnd && isSeparator( *m_DataIt ) )
 		m_DataIt++;
 	std::map<std::string, ObjFile::Material*>::iterator it = m_pModel->m_MaterialMap.find( strMat );
 	if ( it == m_pModel->m_MaterialMap.end() )
@@ -516,7 +518,7 @@ void ObjFileParser::getGroupName()
 
 	// Store groupname in group library 
 	char *pStart = &(*m_DataIt);
-	while ( !isSeparator(*m_DataIt) )
+	while ( m_DataIt != m_DataItEnd && !isSeparator(*m_DataIt) )
 		m_DataIt++;
 	std::string strGroupName(pStart, &(*m_DataIt));
 
@@ -563,7 +565,7 @@ void ObjFileParser::getObjectName()
 	if (m_DataIt == m_DataItEnd)
 		return;
 	char *pStart = &(*m_DataIt);
-	while ( !isSeparator( *m_DataIt ) )
+	while ( m_DataIt != m_DataItEnd && !isSeparator( *m_DataIt ) )
 		++m_DataIt;
 
 	std::string strObjectName(pStart, &(*m_DataIt));
