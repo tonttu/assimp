@@ -87,11 +87,15 @@ def process_dir(d, outfile, file_filter):
                 outf = os.path.join(os.getcwd(), settings.database_name,
                     utils.hashing(fullp, pp))
 
-                cmd = [utils.assimp_bin_path,"dump",fullp,outf,"-b","-s",pp]
+                cmd = [utils.assimp_bin_path,"dump",fullp,outf,"-b","-s","-l"] + pp.split()
                 outfile.write("assimp dump "+"-"*80+"\n")
                 outfile.flush()
                 if subprocess.call(cmd, stdout=outfile, stderr=outfile, shell=False):
                     print("Failure processing " + fullp)
+
+                    # spit out an empty file to indicate that this failure is expected
+                    with open(outf,'wb') as f:
+                        pass
     return num
                     
 
@@ -128,7 +132,7 @@ def extract_zip():
     try:
         zipout = zipfile.ZipFile(settings.database_name + ".zip", "r", 0)
         zipout.extractall(path=settings.database_name)
-    except RuntimeError as r:
+    except (RuntimeError,IOError) as r:
         print(r)
         print("failed to extract previous ZIP contents. "\
               "DB is generated from scratch.")

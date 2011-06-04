@@ -184,17 +184,6 @@ DWORD WINAPI LoadThreadProc(LPVOID lpParameter)
 		return 1;
 	}
 
-	// testweise wieder rausschreiben
-	const aiExportDataBlob* blob = aiExportSceneToBlob( g_pcAsset->pcScene, "collada");
-	if( blob )
-	{
-		FILE* file = fopen( "test.dae", "wb");
-		fwrite( blob->data, 1, blob->size, file);
-		fclose( file);
-
-		aiReleaseExportData( blob);
-	}
-
 	return 0;
 }
 

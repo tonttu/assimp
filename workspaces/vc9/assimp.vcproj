@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9,00"
+	Version="9.00"
 	Name="assimp"
 	ProjectGUID="{5691E159-2D9B-407F-971F-EA5C592DC524}"
 	RootNamespace="assimp"
@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=""
+				AdditionalIncludeDirectories="..\..\contrib\unzip"
 				PreprocessorDefinitions="DEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;WIN32"
 				BasicRuntimeChecks="3"
 				SmallerTypeCheck="true"
@@ -107,7 +107,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=""
+				AdditionalIncludeDirectories="..\..\contrib\unzip"
 				PreprocessorDefinitions="DEBUG, _SCL_SECURE_NO_WARNINGS, _CRT_SECURE_NO_WARNINGS,WIN32"
 				BasicRuntimeChecks="3"
 				SmallerTypeCheck="true"
@@ -173,7 +173,7 @@
 				FavorSizeOrSpeed="0"
 				OmitFramePointers="true"
 				WholeProgramOptimization="false"
-				AdditionalIncludeDirectories=""
+				AdditionalIncludeDirectories="..\..\contrib\unzip"
 				PreprocessorDefinitions="NDEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_SECURE_SCL=0;WIN32"
 				StringPooling="true"
 				RuntimeLibrary="2"
@@ -240,12 +240,13 @@
 				InlineFunctionExpansion="2"
 				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
-				AdditionalIncludeDirectories=""
+				AdditionalIncludeDirectories="..\..\contrib\unzip"
 				PreprocessorDefinitions="NDEBUG, _SCL_SECURE_NO_WARNINGS, _CRT_SECURE_NO_WARNINGS,WIN32"
 				StringPooling="true"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="false"
 				EnableEnhancedInstructionSet="0"
+				FloatingPointModel="2"
 				UsePrecompiledHeader="2"
 				PrecompiledHeaderThrough="AssimpPCH.h"
 				WarningLevel="3"
@@ -305,7 +306,7 @@
 				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="0"
 				OmitFramePointers="true"
-				AdditionalIncludeDirectories=""
+				AdditionalIncludeDirectories="..\..\contrib\unzip"
 				PreprocessorDefinitions="NDEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;WIN32;ASSIMP_BUILD_DLL_EXPORT"
 				StringPooling="true"
 				RuntimeLibrary="2"
@@ -361,7 +362,7 @@
 			Name="release-dll|x64"
 			ConfigurationType="2"
 			InheritedPropertySheets=".\shared\DllShared.vsprops"
-			WholeProgramOptimization="1"
+			WholeProgramOptimization="0"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -385,12 +386,13 @@
 				InlineFunctionExpansion="2"
 				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
-				AdditionalIncludeDirectories=""
+				AdditionalIncludeDirectories="..\..\contrib\unzip"
 				PreprocessorDefinitions="NDEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;WIN32;ASSIMP_BUILD_DLL_EXPORT"
 				StringPooling="true"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="false"
 				EnableEnhancedInstructionSet="0"
+				FloatingPointModel="2"
 				WarningLevel="3"
 			/>
 			<Tool
@@ -454,7 +456,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=""
+				AdditionalIncludeDirectories="..\..\contrib\unzip"
 				PreprocessorDefinitions="DEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;WIN32;ASSIMP_BUILD_DLL_EXPORT"
 				BasicRuntimeChecks="3"
 				SmallerTypeCheck="true"
@@ -531,7 +533,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=""
+				AdditionalIncludeDirectories="..\..\contrib\unzip"
 				PreprocessorDefinitions="DEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;WIN32;ASSIMP_BUILD_DLL_EXPORT"
 				BasicRuntimeChecks="3"
 				SmallerTypeCheck="true"
@@ -605,7 +607,7 @@
 				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="0"
 				OmitFramePointers="true"
-				AdditionalIncludeDirectories="..\..\code\BoostWorkaround"
+				AdditionalIncludeDirectories="..\..\contrib\unzip"
 				PreprocessorDefinitions="NDEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;WIN32;ASSIMP_BUILD_BOOST_WORKAROUND"
 				StringPooling="true"
 				RuntimeLibrary="2"
@@ -672,7 +674,7 @@
 				InlineFunctionExpansion="2"
 				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
-				AdditionalIncludeDirectories="..\..\code\BoostWorkaround"
+				AdditionalIncludeDirectories="..\..\contrib\unzip"
 				PreprocessorDefinitions="NDEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;WIN32;ASSIMP_BUILD_BOOST_WORKAROUND"
 				StringPooling="true"
 				RuntimeLibrary="2"
@@ -733,7 +735,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\code\BoostWorkaround"
+				AdditionalIncludeDirectories="..\..\contrib\unzip"
 				PreprocessorDefinitions="DEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;WIN32;ASSIMP_BUILD_BOOST_WORKAROUND"
 				BasicRuntimeChecks="3"
 				SmallerTypeCheck="true"
@@ -798,7 +800,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\code\BoostWorkaround"
+				AdditionalIncludeDirectories="..\..\contrib\unzip"
 				PreprocessorDefinitions="DEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;WIN32;ASSIMP_BUILD_BOOST_WORKAROUND"
 				BasicRuntimeChecks="3"
 				SmallerTypeCheck="true"
@@ -858,7 +860,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=""
+				AdditionalIncludeDirectories="..\..\contrib\unzip"
 				PreprocessorDefinitions="DEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;WIN32"
 				BasicRuntimeChecks="3"
 				SmallerTypeCheck="true"
@@ -923,7 +925,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=""
+				AdditionalIncludeDirectories="..\..\contrib\unzip"
 				PreprocessorDefinitions="DEBUG, _SCL_SECURE_NO_WARNINGS, _CRT_SECURE_NO_WARNINGS,WIN32"
 				BasicRuntimeChecks="3"
 				SmallerTypeCheck="true"
@@ -987,7 +989,7 @@
 				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="0"
 				OmitFramePointers="true"
-				AdditionalIncludeDirectories=""
+				AdditionalIncludeDirectories="..\..\contrib\unzip"
 				PreprocessorDefinitions="NDEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;WIN32"
 				StringPooling="true"
 				RuntimeLibrary="2"
@@ -1054,7 +1056,7 @@
 				InlineFunctionExpansion="2"
 				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
-				AdditionalIncludeDirectories=""
+				AdditionalIncludeDirectories="..\..\contrib\unzip"
 				PreprocessorDefinitions="NDEBUG, _SCL_SECURE_NO_WARNINGS, _CRT_SECURE_NO_WARNINGS,WIN32"
 				StringPooling="true"
 				RuntimeLibrary="2"
@@ -1276,15 +1278,7 @@
 			Name="sources"
 			>
 			<Filter
-				Name="extra"
-				>
-				<File
-					RelativePath="..\..\code\MD4FileData.h"
-					>
-				</File>
-			</Filter>
-			<Filter
-				Name="import"
+				Name="importers"
 				>
 				<Filter
 					Name="3ds"
@@ -1558,6 +1552,10 @@
 					Name="dxf"
 					>
 					<File
+						RelativePath="..\..\code\DXFHelper.h"
+						>
+					</File>
+					<File
 						RelativePath="..\..\code\DXFLoader.cpp"
 						>
 					</File>
@@ -1657,26 +1655,6 @@
 						RelativePath="..\..\code\LWSLoader.h"
 						>
 					</File>
-					<Filter
-						Name="md2"
-						>
-						<File
-							RelativePath="..\..\code\MD2FileData.h"
-							>
-						</File>
-						<File
-							RelativePath="..\..\code\MD2Loader.cpp"
-							>
-						</File>
-						<File
-							RelativePath="..\..\code\MD2Loader.h"
-							>
-						</File>
-						<File
-							RelativePath="..\..\code\MD2NormalTable.h"
-							>
-						</File>
-					</Filter>
 				</Filter>
 				<Filter
 					Name="bvh"
@@ -1946,9 +1924,69 @@
 						>
 					</File>
 				</Filter>
+				<Filter
+					Name="md2"
+					>
+					<File
+						RelativePath="..\..\code\MD2FileData.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\code\MD2Loader.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\code\MD2Loader.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\code\MD2NormalTable.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="ifc"
+					>
+					<File
+						RelativePath="..\..\code\IFCLoader.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\code\IFCLoader.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\code\IFCReaderGen.cpp"
+						>
+						<FileConfiguration
+							Name="debug|x64"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								AdditionalOptions="/bigobj"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
+						RelativePath="..\..\code\IFCReaderGen.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\code\STEPFile.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\code\STEPFileReader.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\code\STEPFileReader.h"
+						>
+					</File>
+				</Filter>
 			</Filter>
 			<Filter
-				Name="process"
+				Name="postprocessing"
 				>
 				<File
 					RelativePath="..\..\code\CalcTangentsProcess.cpp"
@@ -1972,6 +2010,14 @@
 				</File>
 				<File
 					RelativePath="..\..\code\ConvertToLHProcess.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\code\DeboneProcess.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\code\DeboneProcess.h"
 					>
 				</File>
 				<File
@@ -2068,6 +2114,10 @@
 				</File>
 				<File
 					RelativePath="..\..\code\PretransformVertices.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\code\ProcessHelper.cpp"
 					>
 				</File>
 				<File
@@ -2268,8 +2318,12 @@
 				</File>
 			</Filter>
 			<Filter
-				Name="fs"
+				Name="filesystem"
 				>
+				<File
+					RelativePath="..\..\code\CInterfaceIOWrapper.h"
+					>
+				</File>
 				<File
 					RelativePath="..\..\code\DefaultIOStream.cpp"
 					>
@@ -2290,14 +2344,14 @@
 					RelativePath="..\..\code\FileSystemFilter.h"
 					>
 				</File>
-			</Filter>
-			<Filter
-				Name="core"
-				>
 				<File
-					RelativePath="..\..\code\aiAssert.cpp"
+					RelativePath="..\..\code\MemoryIOWrapper.h"
 					>
 				</File>
+			</Filter>
+			<Filter
+				Name="core_import"
+				>
 				<File
 					RelativePath="..\..\code\Assimp.cpp"
 					>
@@ -2331,10 +2385,6 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\code\Exporter.cpp"
-					>
-				</File>
-				<File
 					RelativePath="..\..\code\fast_atof.h"
 					>
 				</File>
@@ -2356,6 +2406,10 @@
 				</File>
 				<File
 					RelativePath="..\..\code\LineSplitter.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\code\LogAux.h"
 					>
 				</File>
 				<File
@@ -2464,6 +2518,10 @@
 				</File>
 				<File
 					RelativePath="..\..\code\ParsingUtils.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\code\PolyTools.h"
 					>
 				</File>
 				<File
@@ -4015,6 +4073,10 @@
 					>
 				</File>
 				<File
+					RelativePath="..\..\code\BoostWorkaround\boost\make_shared.hpp"
+					>
+				</File>
+				<File
 					RelativePath="..\..\code\BoostWorkaround\boost\pointer_cast.hpp"
 					>
 				</File>
@@ -4056,16 +4118,40 @@
 				</Filter>
 			</Filter>
 			<Filter
-				Name="export"
+				Name="core_export"
 				>
 				<File
-					RelativePath="..\..\code\ColladaExporter.cpp"
+					RelativePath="..\..\code\AssimpCExport.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\..\code\ColladaExporter.h"
+					RelativePath="..\..\code\BlobIOSystem.h"
 					>
 				</File>
+				<File
+					RelativePath="..\..\code\Exporter.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="exporters"
+				>
+				<Filter
+					Name="collada"
+					>
+					<File
+						RelativePath="..\..\code\ColladaExporter.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\code\ColladaExporter.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="3ds"
+					>
+				</Filter>
 			</Filter>
 		</Filter>
 		<Filter
