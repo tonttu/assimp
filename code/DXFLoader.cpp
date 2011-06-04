@@ -599,8 +599,6 @@ void DXFImporter::ParseInsertion(DXF::LineReader& reader, DXF::FileData& output)
 // ------------------------------------------------------------------------------------------------
 void DXFImporter::ParsePolyLine(DXF::LineReader& reader, DXF::FileData& output)
 {
-	bool ret = false;
-
 	output.blocks.back().lines.push_back( boost::shared_ptr<DXF::PolyLine>( new DXF::PolyLine() ) );
 	DXF::PolyLine& line = *output.blocks.back().lines.back();
 
@@ -881,7 +879,7 @@ void DXFImporter::Parse3DFace(DXF::LineReader& reader, DXF::FileData& output)
 	}
 	
 	// sanity checks to see if we got something meaningful
-	if (b[1] && !b[0] || !b[2] || !b[3]) {
+	if ((b[1] && !b[0]) || !b[2] || !b[3]) {
 		DefaultLogger::get()->warn("DXF: unexpected vertex setup in 3DFACE/LINE/FACE entity; ignoring");
 		output.blocks.back().lines.pop_back();
 		return;

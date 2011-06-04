@@ -507,6 +507,7 @@ namespace STEP {
 
 			// GenericFill<T> is undefined so we need to have a specialization
 			const size_t num_args = GenericFill<TDerived>(db,params,&*impl);
+			(void)num_args;
 			
 			// the following check is commented because it will always trigger if
 			// parts of the entities are generated with dummy wrapper code.

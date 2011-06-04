@@ -259,10 +259,11 @@ struct TempMesh
 			aiVector3D vmin,vmax;
 			ArrayBounds(&*base, cnt ,vmin,vmax);
 
-			const float epsilon = (vmax-vmin).SquareLength() / 1e9f, dotepsilon = 1e-7;
+			const float epsilon = (vmax-vmin).SquareLength() / 1e9f;
 
 			//// look for vertices that lie directly on the line between their predecessor and their 
 			//// successor and replace them with either of them.
+			//const float dotepsilon = 1e-7;
 			//for(size_t i = 0; i < cnt; ++i) {
 			//	aiVector3D& v1 = *(base+i), &v0 = *(base+(i?i-1:cnt-1)), &v2 = *(base+(i+1)%cnt);
 			//	const aiVector3D& d0 = (v1-v0), &d1 = (v2-v1);
@@ -1022,7 +1023,7 @@ void MergePolygonBoundaries(TempMesh& result, const TempMesh& inmesh, size_t mas
 	// see if one of the polygons is a IfcFaceOuterBound (in which case `master_bounds` is its index).
 	// sadly we can't rely on it, the docs say 'At most one of the bounds shall be of the type IfcFaceOuterBound' 
 	float area_outer_polygon = 1e-10f;
-	if (master_bounds != -1) {
+	if (master_bounds != (size_t)-1) {
 		outer_polygon = begin + master_bounds;
 		outer_polygon_start = std::accumulate(begin,outer_polygon,0);
 		area_outer_polygon = normals[master_bounds].SquareLength();
@@ -1146,17 +1147,17 @@ next_loop:
 void ProcessConnectedFaceSet(const IFC::IfcConnectedFaceSet& fset, TempMesh& result, ConversionData& conv)
 {
 	BOOST_FOREACH(const IFC::IfcFace& face, fset.CfsFaces) {
-		size_t ob = -1, cnt = 0;
+		// size_t ob = -1, cnt = 0;
 		TempMesh meshout;
 		BOOST_FOREACH(const IFC::IfcFaceBound& bound, face.Bounds) {
 			
 			// XXX implement proper merging for polygonal loops
 			if(const IFC::IfcPolyLoop* const polyloop = bound.Bound->ToPtr<IFC::IfcPolyLoop>()) {
 				if(ProcessPolyloop(*polyloop, meshout,conv)) {
-					if(bound.ToPtr<IFC::IfcFaceOuterBound>()) {
-						ob = cnt;
-					}
-					++cnt;
+					// if(bound.ToPtr<IFC::IfcFaceOuterBound>()) {
+					// 	ob = cnt;
+					// }
+					// ++cnt;
 				}
 			}
 			else {
@@ -1385,13 +1386,13 @@ bool TryAddOpenings(const std::vector<TempOpening>& openings,const std::vector<a
 			continue;
 		}
 
-		const aiVector3D diff = t.extrusionDir; 
+		// const aiVector3D diff = t.extrusionDir;
 		const std::vector<aiVector3D>& va = t.profileMesh->verts;
 		if(va.size() <= 2) {
 			continue;	
 		}
 
-		const float dd = t.extrusionDir*nor;
+		// const float dd = t.extrusionDir*nor;
 		IFCImporter::LogDebug("apply an IfcOpeningElement linked via IfcRelVoidsElement to this polygon");
 
 		got_openings = true;
@@ -1635,7 +1636,7 @@ void InsertWindowContours(const std::vector< BoundingBox >& bbs,const std::vecto
 			}
 
 			if (hit) {
-				if (last_hit != -1) {
+				if (last_hit != (size_t)-1) {
 					const size_t old = curmesh.verts.size();
 					size_t cnt = last_hit > n ? size-(last_hit-n) : n-last_hit;
 					for(size_t a = last_hit, e = 0; e <= cnt; a=(a+1)%size, ++e) {
@@ -1683,7 +1684,8 @@ bool TryAddOpenings_Quadrulate(const std::vector<TempOpening>& openings,const st
 	const aiVector3D any_point = out[s-4];
 	const aiVector3D nor = ((out[s-3]-any_point)^(out[s-2]-any_point)).Normalize();
 
-	const aiVector3D diag = vmax-vmin, diagn = aiVector3D(diag).Normalize();
+	const aiVector3D diag = vmax-vmin;
+	// const aiVector3D diagn = aiVector3D(diag).Normalize();
 	const float ax = fabs(nor.x);    
 	const float ay = fabs(nor.y);   
 	const float az = fabs(nor.z);    
@@ -1727,7 +1729,7 @@ bool TryAddOpenings_Quadrulate(const std::vector<TempOpening>& openings,const st
 			continue;
 		}
 
-		const aiVector3D diff = t.extrusionDir; 
+		// const aiVector3D diff = t.extrusionDir;
 		const std::vector<aiVector3D>& va = t.profileMesh->verts;
 		if(va.size() <= 2) {
 			continue;	
@@ -1928,7 +1930,7 @@ void ProcessExtrudedAreaSolid(const IFC::IfcExtrudedAreaSolid& solid, TempMesh& 
 		}
 	}
 
-	if(conv.apply_openings && (sides_with_openings != 2 && sides_with_openings || sides_with_v_openings != 2 && sides_with_v_openings)) {
+	if(conv.apply_openings && ((sides_with_openings != 2 && sides_with_openings) || (sides_with_v_openings != 2 && sides_with_v_openings))) {
 		IFCImporter::LogWarn("failed to resolve all openings, presumably their topology is not supported by Assimp");
 	}
 
@@ -2158,9 +2160,9 @@ void FillMaterial(MaterialHelper* mat,const IFC::IfcSurfaceStyle* surf,Conversio
 				}
 			}
 		}
-		else if (const IFC::IfcSurfaceStyleWithTextures* tex = sel2->ResolveSelectPtr<IFC::IfcSurfaceStyleWithTextures>(conv.db)) {
+		//else if (const IFC::IfcSurfaceStyleWithTextures* tex = sel2->ResolveSelectPtr<IFC::IfcSurfaceStyleWithTextures>(conv.db)) {
 			// XXX
-		}
+		//}
 	}
 
 }
@@ -2264,6 +2266,7 @@ bool ProcessGeometricItem(const IFC::IfcGeometricRepresentationItem& geo, std::v
 		ProcessBoolean(*boolean,meshtmp,conv);
 	}
 	else if(const IFC::IfcBoundingBox* bb = geo.ToPtr<IFC::IfcBoundingBox>()) {
+		(void)bb;
 		// silently skip over bounding boxes
 		return false; 
 	}

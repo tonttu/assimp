@@ -400,7 +400,7 @@ void BlenderImporter::ConvertBlendFile(aiScene* out, const Scene& in,const FileD
 // ------------------------------------------------------------------------------------------------
 void BlenderImporter::ResolveImage(MaterialHelper* out, const Material* mat, const MTex* tex, const Image* img, ConversionData& conv_data)
 {
-	mat; tex; conv_data;
+	(void)mat; (void)tex; (void)conv_data;
 	aiString name;
 
 	// check if the file contents are bundled with the BLEND file
@@ -445,7 +445,7 @@ void BlenderImporter::ResolveImage(MaterialHelper* out, const Material* mat, con
 // ------------------------------------------------------------------------------------------------
 void BlenderImporter::AddSentinelTexture(MaterialHelper* out, const Material* mat, const MTex* tex, ConversionData& conv_data)
 {
-	mat; tex; conv_data;
+	(void)mat; (void)tex; (void)conv_data;
 
 	aiString name;
 	name.length = sprintf(name.data, "Procedural,num=%i,type=%s",conv_data.sentinel_cnt++,

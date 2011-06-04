@@ -469,7 +469,6 @@ void Q3BSPFileImporter::createMaterials( const Q3BSP::Q3BSPModel *pModel, aiScen
 	}
 
 	pScene->mMaterials = new aiMaterial*[ m_MaterialLookupMap.size() ];
-	size_t texIdx( 0 );
 	aiString aiMatName;
 	int textureId( -1 ), lightmapId( -1 );
 	for ( FaceMapIt it = m_MaterialLookupMap.begin(); it != m_MaterialLookupMap.end();
@@ -656,6 +655,7 @@ bool Q3BSPFileImporter::importTextureFromArchive( const Q3BSP::Q3BSPModel *pMode
 			pTexture->mWidth = texSize;
 			unsigned char *pData = new unsigned char[ pTexture->mWidth ];
 			size_t readSize = pTextureStream->Read( pData, sizeof( unsigned char ), pTexture->mWidth );
+			(void)readSize;
 			ai_assert( readSize == pTexture->mWidth );
 			pTexture->pcData = reinterpret_cast<aiTexel*>( pData );
 			pTexture->achFormatHint[ 0 ] = ext[ 0 ];

@@ -499,6 +499,7 @@ void ObjFileImporter::appendChildToParentNode(aiNode *pParent, aiNode *pChild)
 	// Assign parent to child
 	pChild->mParent = pParent;
 	size_t sNumChildren = 0;
+	(void)sNumChildren; // remove warning on release build
 	
 	// If already children was assigned to the parent node, store them in a 
 	std::vector<aiNode*> temp;
