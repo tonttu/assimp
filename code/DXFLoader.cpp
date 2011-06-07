@@ -98,7 +98,7 @@ DXFImporter::~DXFImporter()
 
 // ------------------------------------------------------------------------------------------------
 // Returns whether the class can handle the format of the given file. 
-bool DXFImporter::CanRead( const std::string& pFile, IOSystem* pIOHandler, bool checkSig) const
+bool DXFImporter::CanRead( const std::string& pFile, IOSystem* /*pIOHandler*/, bool /*checkSig*/) const
 {
 	return SimpleExtensionCheck(pFile,"dxf");
 }
@@ -381,7 +381,7 @@ void DXFImporter::ExpandBlockReferences(DXF::Block& bl,const DXF::BlockMap& bloc
 
 
 // ------------------------------------------------------------------------------------------------
-void DXFImporter::GenerateMaterials(aiScene* pScene, DXF::FileData& output)
+void DXFImporter::GenerateMaterials(aiScene* pScene, DXF::FileData& /*output*/)
 {
 	// generate an almost-white default material. Reason:
 	// the default vertex color is GREY, so we are
@@ -408,7 +408,7 @@ void DXFImporter::GenerateMaterials(aiScene* pScene, DXF::FileData& output)
 
 
 // ------------------------------------------------------------------------------------------------
-void DXFImporter::GenerateHierarchy(aiScene* pScene, DXF::FileData& output)
+void DXFImporter::GenerateHierarchy(aiScene* pScene, DXF::FileData& /*output*/)
 {
 	// generate the output scene graph, which is just the root node with a single child for each layer.
 	pScene->mRootNode = new aiNode();
@@ -441,7 +441,7 @@ void DXFImporter::SkipSection(DXF::LineReader& reader)
 
 
 // ------------------------------------------------------------------------------------------------
-void DXFImporter::ParseHeader(DXF::LineReader& reader, DXF::FileData& output)
+void DXFImporter::ParseHeader(DXF::LineReader& reader, DXF::FileData& /*output*/)
 {	
 	for( ;!reader.End() && !reader.Is(0,"ENDSEC"); reader++);
 }

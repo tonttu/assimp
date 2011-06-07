@@ -158,7 +158,7 @@ Q3BSPFileImporter::~Q3BSPFileImporter()
 
 // ------------------------------------------------------------------------------------------------
 //	Returns true, if the loader can read this.
-bool Q3BSPFileImporter::CanRead( const std::string& rFile, IOSystem* pIOHandler, bool checkSig ) const
+bool Q3BSPFileImporter::CanRead( const std::string& rFile, IOSystem* /*pIOHandler*/, bool checkSig ) const
 {
 	if(!checkSig) {
 		return SimpleExtensionCheck( rFile, Q3BSPExtension .c_str() );
@@ -176,7 +176,7 @@ void Q3BSPFileImporter::GetExtensionList( std::set<std::string>& extensions )
 
 // ------------------------------------------------------------------------------------------------
 //	Import method.
-void Q3BSPFileImporter::InternReadFile(const std::string &rFile, aiScene* pScene, IOSystem* pIOHandler)
+void Q3BSPFileImporter::InternReadFile(const std::string &rFile, aiScene* pScene, IOSystem* /*pIOHandler*/)
 {
 	Q3BSPZipArchive Archive( rFile );
 	if ( !Archive.isOpen() )
@@ -622,7 +622,7 @@ aiFace *Q3BSPFileImporter::getNextFace( aiMesh *pMesh, unsigned int &rFaceIdx )
 // ------------------------------------------------------------------------------------------------
 //	Imports a texture file.
 bool Q3BSPFileImporter::importTextureFromArchive( const Q3BSP::Q3BSPModel *pModel,
-												 Q3BSP::Q3BSPZipArchive *pArchive, aiScene* pScene,
+												 Q3BSP::Q3BSPZipArchive *pArchive, aiScene* /*pScene*/,
 												 Assimp::MaterialHelper *pMatHelper, int textureId )
 {
 	std::vector<std::string> supportedExtensions;

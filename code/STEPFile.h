@@ -732,7 +732,7 @@ namespace STEP {
 	// ------------------------------------------------------------------------------
 	template <typename T>
 	struct InternGenericConvert {
-		void operator()(T& out, const boost::shared_ptr< const EXPRESS::DataType >& in, const STEP::DB& db) {
+		void operator()(T& out, const boost::shared_ptr< const EXPRESS::DataType >& in, const STEP::DB& /*db*/) {
 			try{
 				out = dynamic_cast< const typename PickBaseType<T>::Type& > ( *in );
 			}
@@ -744,7 +744,7 @@ namespace STEP {
 
 	template <>
 	struct InternGenericConvert< boost::shared_ptr< const EXPRESS::DataType > > {
-		void operator()(boost::shared_ptr< const EXPRESS::DataType >& out, const boost::shared_ptr< const EXPRESS::DataType >& in, const STEP::DB& db) {
+		void operator()(boost::shared_ptr< const EXPRESS::DataType >& out, const boost::shared_ptr< const EXPRESS::DataType >& in, const STEP::DB& /*db*/) {
 			out = in;
 		}
 	};

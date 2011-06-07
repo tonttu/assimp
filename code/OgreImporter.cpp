@@ -707,7 +707,7 @@ void OgreImporter::LoadSkeleton(std::string FileName, vector<Bone> &Bones, vecto
 }
 
 
-void OgreImporter::CreateAssimpSkeleton(const std::vector<Bone> &Bones, const std::vector<Animation> &Animations)
+void OgreImporter::CreateAssimpSkeleton(const std::vector<Bone> &Bones, const std::vector<Animation> &/*Animations*/)
 {
 	if(!m_CurrentScene->mRootNode)
 		throw DeadlyImportError("No root node exists!!");

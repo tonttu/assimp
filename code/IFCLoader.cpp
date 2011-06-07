@@ -670,7 +670,7 @@ void AssignMatrixAxes(aiMatrix4x4& out, const aiVector3D& x, const aiVector3D& y
 }
 
 // ------------------------------------------------------------------------------------------------
-void ConvertAxisPlacement(aiMatrix4x4& out, const IFC::IfcAxis2Placement3D& in, ConversionData& conv)
+void ConvertAxisPlacement(aiMatrix4x4& out, const IFC::IfcAxis2Placement3D& in, ConversionData& /*conv*/)
 {
 	aiVector3D loc;
 	ConvertCartesianPoint(loc,in.Location);
@@ -695,7 +695,7 @@ void ConvertAxisPlacement(aiMatrix4x4& out, const IFC::IfcAxis2Placement3D& in, 
 }
 
 // ------------------------------------------------------------------------------------------------
-void ConvertAxisPlacement(aiMatrix4x4& out, const IFC::IfcAxis2Placement2D& in, ConversionData& conv)
+void ConvertAxisPlacement(aiMatrix4x4& out, const IFC::IfcAxis2Placement2D& in, ConversionData& /*conv*/)
 {
 	aiVector3D loc;
 	ConvertCartesianPoint(loc,in.Location);
@@ -712,7 +712,7 @@ void ConvertAxisPlacement(aiMatrix4x4& out, const IFC::IfcAxis2Placement2D& in, 
 }
 
 // ------------------------------------------------------------------------------------------------
-void ConvertAxisPlacement(aiVector3D& axis, aiVector3D& pos, const IFC::IfcAxis1Placement& in, ConversionData& conv)
+void ConvertAxisPlacement(aiVector3D& axis, aiVector3D& pos, const IFC::IfcAxis1Placement& in, ConversionData& /*conv*/)
 {
 	ConvertCartesianPoint(pos,in.Location);
 	if (in.Axis) {
@@ -798,7 +798,7 @@ void ConvertTransformOperator(aiMatrix4x4& out, const IFC::IfcCartesianTransform
 }
 
 // ------------------------------------------------------------------------------------------------
-bool ProcessPolyloop(const IFC::IfcPolyLoop& loop, TempMesh& meshout, ConversionData& conv)
+bool ProcessPolyloop(const IFC::IfcPolyLoop& loop, TempMesh& meshout, ConversionData& /*conv*/)
 {
 	size_t cnt = 0;
 	BOOST_FOREACH(const IFC::IfcCartesianPoint& c, loop.Polygon) {
@@ -1179,7 +1179,7 @@ void ProcessConnectedFaceSet(const IFC::IfcConnectedFaceSet& fset, TempMesh& res
 }
 
 // ------------------------------------------------------------------------------------------------
-void ProcessPolyLine(const IFC::IfcPolyline& def, TempMesh& meshout, ConversionData& conv)
+void ProcessPolyLine(const IFC::IfcPolyline& def, TempMesh& meshout, ConversionData& /*conv*/)
 {
 	// this won't produce a valid mesh, it just spits out a list of vertices
 	aiVector3D t;
@@ -2144,7 +2144,7 @@ void FillMaterial(MaterialHelper* mat,const IFC::IfcSurfaceStyle* surf,Conversio
 					mat->AddProperty(&col,1, AI_MATKEY_COLOR_REFLECTIVE);
 				}
 
-				const int shading = (ren->SpecularHighlight && ren->SpecularColour)?ConvertShadingMode(ren->ReflectanceMethod):aiShadingMode_Gouraud;
+				const int shading = (ren->SpecularHighlight && ren->SpecularColour)?ConvertShadingMode(ren->ReflectanceMethod):int(aiShadingMode_Gouraud);
 				mat->AddProperty(&shading,1, AI_MATKEY_SHADING_MODEL);
 
 				if (ren->SpecularHighlight) {
@@ -2289,7 +2289,7 @@ bool ProcessGeometricItem(const IFC::IfcGeometricRepresentationItem& geo, std::v
 }
 
 // ------------------------------------------------------------------------------------------------
-void AssignAddedMeshes(std::vector<unsigned int>& mesh_indices,aiNode* nd,ConversionData& conv)
+void AssignAddedMeshes(std::vector<unsigned int>& mesh_indices,aiNode* nd,ConversionData& /*conv*/)
 {
 	if (!mesh_indices.empty()) {
 
