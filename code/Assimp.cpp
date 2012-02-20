@@ -267,7 +267,8 @@ void aiReleaseImport( const aiScene* pScene)
 	}
 	else {
 		// deleting the Importer also deletes the scene
-		delete priv->mOrigImporter;
+		Importer* importer = priv->mOrigImporter;
+		delete importer;
 	}
 	
 	ASSIMP_END_EXCEPTION_REGION(void);
