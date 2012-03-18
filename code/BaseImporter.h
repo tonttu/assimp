@@ -265,13 +265,15 @@ public: // static utilities
 	 *  @param tokens List of tokens to search for
 	 *  @param numTokens Size of the token array
 	 *  @param searchBytes Number of bytes to be searched for the tokens.
+	 *  @param tokensSol Tokens are only matched at the beginning of a line/file
 	 */
 	static bool SearchFileHeaderForToken(
 		IOSystem* pIOSystem, 
 		const std::string&	file,
 		const char** tokens, 
 		unsigned int numTokens,
-		unsigned int searchBytes = 200);
+		unsigned int searchBytes = 200,
+		bool tokensSol = false);
 
 
 	// -------------------------------------------------------------------
