@@ -218,9 +218,9 @@ private:
 					break;
 				}
 
-				last_dirsep = dirsep;
+				last_dirsep = dirsep-1;
 
-				tmp += in.substr(dirsep+1, in.length()-pos); 
+				tmp += in.substr(dirsep+1);
 				if (wrapped->Exists(tmp)) {
 					in = tmp;
 					return;
