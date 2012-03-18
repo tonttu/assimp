@@ -206,9 +206,7 @@ float ImproveCacheLocalityProcess::ProcessMesh( aiMesh* pMesh, unsigned int mesh
 
 	// create a copy of the piNumTriPtr buffer
 	unsigned int* const piNumTriPtr = adj.mLiveTriangles;
-	const unsigned int* const piNumTriPtrNoModify = new unsigned int[pMesh->mNumVertices];
-	memcpy(const_cast<unsigned int* const> (piNumTriPtrNoModify),piNumTriPtr,
-		pMesh->mNumVertices * sizeof(unsigned int));
+	const std::vector<unsigned int> piNumTriPtrNoModify(piNumTriPtr, piNumTriPtr + pMesh->mNumVertices);
 
 	// get the largest number of referenced triangles and allocate the "candidate buffer"
 	unsigned int iMaxRefTris = 0; {
@@ -377,6 +375,5 @@ float ImproveCacheLocalityProcess::ProcessMesh( aiMesh* pMesh, unsigned int mesh
 	delete[] piCachingStamps;
 	delete[] piIBOutput;
 	delete[] piCandidates;
-	delete[] piNumTriPtrNoModify;
 	return fACMR2;
 }
