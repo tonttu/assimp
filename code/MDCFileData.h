@@ -116,6 +116,10 @@ struct Surface
 	uint32_t ulOffsetFrameBaseFrames ;
 	uint32_t ulOffsetFrameCompFrames ;
 	uint32_t ulOffsetEnd ;
+	Surface()
+	{
+		ucName[AI_MDC_MAXQPATH-1] = '\0';
+	}
 } PACK_STRUCT;
 
 // ---------------------------------------------------------------------------
